@@ -43,12 +43,35 @@ public class Flock : MonoBehaviour
     [Range(-20f, -15f)]
     public float borderBottom = -16f;
 
+    [Range(15f, 20f)]
+    public float borderRight = 18f;
+
+    [Range(15f, 20f)]
+    public float borderTop = 15f;
+
+    [Range(1f, 3f)]
+    public float cohereEmotionWeight = 2f;
+
+    [Range(1f, 3f)]
+    public float alignEmotionWeight = 2f;
+
+    [Range(1f, 3f)]
+    public float avoidEmotionWeight = 3f;
+
+    [Range(1f, 3f)]
+    public float mSteepness = 2f;
+
     // used for utility
     float squareMaxSpeed;
     float squareNeighborRadius;
     float squareAvoidanceRadius;
     float squareCohesionAlignmentRadius;
 
+    public float MSteepness { get { return mSteepness; } }
+    public float AvoidEmotionWeight { get { return avoidEmotionWeight; } }
+    public float AlignEmotionWeight { get { return alignEmotionWeight; } }
+    public float CohereEmotionWeight { get { return cohereEmotionWeight; } }
+    public float SquareNeighborRadius { get { return squareNeighborRadius; } }
     public float SquareAvoidanceRadius { get { return squareAvoidanceRadius; } }
     public float SquareCohesionAlignmentRadius { get { return squareCohesionAlignmentRadius; } }
     public float StaticMovementMultiplier { get { return staticMovementMultiplier; } }
@@ -60,6 +83,17 @@ public class Flock : MonoBehaviour
             bottomLeftBorder.x = borderLeft;
             bottomLeftBorder.y = borderBottom;
             return bottomLeftBorder;
+        }
+    }
+
+    public Vector2 TopRightBorder
+    {
+        get
+        {
+            var topRightBorder = new Vector2();
+            topRightBorder.x = borderTop;
+            topRightBorder.y = borderRight;
+            return topRightBorder;
         }
     }
 

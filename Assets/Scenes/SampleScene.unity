@@ -137,11 +137,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7837589469490961129, guid: 14d0d42f7cb4de94481608236567b4ef, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 17.82
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 7837589469490961129, guid: 14d0d42f7cb4de94481608236567b4ef, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 14.62
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 7837589469490961129, guid: 14d0d42f7cb4de94481608236567b4ef, type: 3}
       propertyPath: m_LocalPosition.z
@@ -467,7 +467,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   agentPrefab: {fileID: 1421969015267090530, guid: 1fd2a69a7ee92ef43b04ad49e9a17458, type: 3}
   behaviour: {fileID: 11400000, guid: aba9385109a90474dbcfc55210d61686, type: 2}
-  startingCount: 1
+  startingCount: 10
   driveFactor: 2.4
   maxSpeed: 6.1
   neighborRadius: 4.98
@@ -476,6 +476,12 @@ MonoBehaviour:
   staticMovementMultiplier: 0.05
   borderLeft: -17.75
   borderBottom: -16
+  borderRight: 18
+  borderTop: 15
+  cohereEmotionWeight: 2
+  alignEmotionWeight: 2
+  avoidEmotionWeight: 3
+  mSteepness: 2
 --- !u!4 &1927801209
 Transform:
   m_ObjectHideFlags: 0

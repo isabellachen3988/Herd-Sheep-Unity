@@ -1,10 +1,11 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "Flock/Behaviour/Avoidance")]
-public class AvoidanceBehaviour : FilteredFlockBehaviour
+public class AvoidanceBehaviour : DoubleFilteredFlockBehaviour
 {
     public override Vector2 CalculateMove(FlockAgent agent, List<Transform> context, Flock flock)
     {
@@ -27,6 +28,14 @@ public class AvoidanceBehaviour : FilteredFlockBehaviour
             }
         }
         if (nAvoid > 0) avoidanceMove /= nAvoid; // average it
+
+        List<Transform> filteredThreatContext = (filter == null) ? context : filter2.Filter(agent, context);
+        var sigmoid = 1f;
+        if (filteredThreatContext.Count > 0)
+        {
+            sigmoid = (float)(1 + (1 / Math.PI * Math.Atan((flock.SquareNeighborRadius - Vector2.Distance(agent.transform.position, filteredThreatContext[0].position)) / flock.mSteepness) + 0.5) * flock.AvoidEmotionWeight);
+        }
+        avoidanceMove *= sigmoid;
 
         return avoidanceMove;
     }

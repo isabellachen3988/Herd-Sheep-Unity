@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -29,15 +30,19 @@ public class SteeredCohesionBehavior : DoubleFilteredFlockBehaviour
         }
         // average it out again (since we want middle point between all the neighbors)
         if (nCohere > 0) cohesionMove /= nCohere;
-
-        List<Transform> filteredThreatContext = (filter == null) ? context : filter2.Filter(agent, context);
         
         //create offset from agent position
         cohesionMove -= (Vector2)agent.transform.position;
 
+        List<Transform> filteredThreatContext = (filter == null) ? context : filter2.Filter(agent, context);
+        var sigmoid = 1f;
+        if (filteredThreatContext.Count > 0)
+        {
+            sigmoid = (float)(1 + (1 / Math.PI * Math.Atan((flock.SquareNeighborRadius - Vector2.Distance(agent.transform.position, filteredThreatContext[0].position)) / flock.mSteepness) + 0.5) * flock.CohereEmotionWeight);
+        }
+        cohesionMove *= sigmoid;
+
         // if the threat is nearby, then we want a strong cohesion
-        // TODO - figure out the stronger cohesion problem.. or not
-        // lets create the playing field next
         cohesionMove = Vector2.SmoothDamp(agent.transform.up * flock.StaticMovementMultiplier, cohesionMove, ref currentVelocity, agentSmoothTime);
         
         return cohesionMove;

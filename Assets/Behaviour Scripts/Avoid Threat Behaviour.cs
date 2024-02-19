@@ -34,7 +34,6 @@ public class AvoidThreatBehaviour : FilteredFlockBehaviour
             agent.Accelerate();
             var threat = filteredContext[0];
             var movementIntensity = Mathf.Pow((float)(Vector2.Distance(agent.transform.position, threat.position) / SOFTNESS_FACTOR + SMALL_VALUE), -2);
-            Debug.Log(movementIntensity);
             avoidanceMove = 10 * movementIntensity * (Vector2)(agent.transform.position - threat.position) / Vector2.Distance(agent.transform.position, threat.position);
         }
 
