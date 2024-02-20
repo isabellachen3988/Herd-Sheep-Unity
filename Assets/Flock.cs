@@ -37,16 +37,16 @@ public class Flock : MonoBehaviour
     [Range(0f, 1f)]
     public float staticMovementMultiplier = 0.01f;
 
-    [Range(-20f, -15f)]
+    [Range(-25f, -10f)]
     public float borderLeft = -17.75f;
 
-    [Range(-20f, -15f)]
+    [Range(-25f, -10f)]
     public float borderBottom = -16f;
 
-    [Range(15f, 20f)]
-    public float borderRight = 18f;
+    [Range(10f, 20f)]
+    public float borderRight = 25f;
 
-    [Range(15f, 20f)]
+    [Range(10f, 25f)]
     public float borderTop = 15f;
 
     [Range(1f, 3f)]
@@ -91,8 +91,8 @@ public class Flock : MonoBehaviour
         get
         {
             var topRightBorder = new Vector2();
-            topRightBorder.x = borderTop;
-            topRightBorder.y = borderRight;
+            topRightBorder.x = borderRight; 
+            topRightBorder.y = borderTop;
             return topRightBorder;
         }
     }
@@ -111,12 +111,14 @@ public class Flock : MonoBehaviour
         // instantiate flock
         for (int i = 0; i < startingCount; i++)
         {
+            var spawnArea = Random.insideUnitCircle * startingCount * AgentDensity; // location of spawn - set size of circle is based on # agents, so we have a good density
+            spawnArea.x += 20;
             FlockAgent newAgent = Instantiate(
                 agentPrefab,
-                Random.insideUnitCircle * startingCount * AgentDensity, // location of spawn - set size of circle is based on # agents, so we have a good density
+                spawnArea, 
                 Quaternion.Euler(Vector3.forward * Random.Range(0f, 360f)), // rotation is in quaternion
                 transform // parent
-                );
+            );
             newAgent.name = "Agent " + i;
             newAgent.Initialize(this); // now the agent knows that it belongs to a flock
 

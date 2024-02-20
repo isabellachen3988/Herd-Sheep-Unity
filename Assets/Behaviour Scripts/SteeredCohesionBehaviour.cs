@@ -43,8 +43,8 @@ public class SteeredCohesionBehavior : DoubleFilteredFlockBehaviour
         cohesionMove *= sigmoid;
 
         // if the threat is nearby, then we want a strong cohesion
-        cohesionMove = Vector2.SmoothDamp(agent.transform.up * flock.StaticMovementMultiplier, cohesionMove, ref currentVelocity, agentSmoothTime);
-        
+        //cohesionMove = Vector2.SmoothDamp(agent.transform.up * flock.StaticMovementMultiplier, cohesionMove, ref currentVelocity, agentSmoothTime);
+
         return cohesionMove;
     }
 }

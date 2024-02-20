@@ -8,7 +8,7 @@ public class MouseFollow : MonoBehaviour
     Vector3 mousePosition;
     public float moveSpeed = 0.1f;
     Rigidbody2D rb;
-    Vector2 position = new Vector2(0f, 0f);
+    Vector2 position = new Vector2(22f, 0f);
 
     private Vector3 topRightLimit;
     private Vector3 bottomLeftLimit;
