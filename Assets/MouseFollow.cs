@@ -6,7 +6,7 @@ using UnityEngine;
 public class MouseFollow : MonoBehaviour
 {
     Vector3 mousePosition;
-    public float moveSpeed = 0.1f;
+    
     Rigidbody2D rb;
     Vector2 position = new Vector2(22f, 0f);
 
@@ -14,6 +14,9 @@ public class MouseFollow : MonoBehaviour
     private Vector3 bottomLeftLimit;
     public GameObject topRightLimitGameobject;
     public GameObject bottomLeftLimitGameobject;
+
+    [Range(0f, 0.1f)]
+    public float moveSpeed = 0.1f;
 
     // Start is called before the first frame update
     void Start()
@@ -38,6 +41,8 @@ public class MouseFollow : MonoBehaviour
         borderDefinedMousePos.x = Mathf.Min(Mathf.Max(mousePosition.x, bottomLeftLimit.x), topRightLimit.x);
         borderDefinedMousePos.y = Mathf.Min(Mathf.Max(mousePosition.y, bottomLeftLimit.y), topRightLimit.y);
         position = Vector2.Lerp(transform.position, borderDefinedMousePos, moveSpeed);
+
+        rb.MovePosition(position);
     }
 
     // fixed update for physics-based systems (why?)

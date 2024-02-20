@@ -11,19 +11,19 @@ public class FlockAgent : MonoBehaviour
     Collider2D agentCollider;
     public Collider2D AgentCollider { get { return agentCollider; } }
 
-    float acceleration = 0.01f;
-    float speedMultiplier = 1.0f;
-    public float SpeedMultiplier { get { return  speedMultiplier; } }
+    //float acceleration = 0.01f;
+    //float speedMultiplier = 1.0f;
+    //public float SpeedMultiplier { get { return  speedMultiplier; } }
 
-    public void Accelerate ()
-    {
-        speedMultiplier += acceleration;
-    }
+    //public void Accelerate ()
+    //{
+    //    speedMultiplier += acceleration;
+    //}
 
-    public void Deaccelerate()
-    {
-        speedMultiplier = Mathf.Max(1f, speedMultiplier - acceleration);
-    }
+    //public void Deaccelerate()
+    //{
+    //    speedMultiplier = Mathf.Max(1f, speedMultiplier - acceleration);
+    //}
 
     // Start is called before the first frame update
     void Start()

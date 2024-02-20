@@ -137,7 +137,6 @@ public class Flock : MonoBehaviour
             velocity *= driveFactor; // to get speedier movement
 
             // ensure max speed limit
-            //Debug.Log("Limited: " + (move.sqrMagnitude > squareMaxSpeed));
             if (velocity.sqrMagnitude > squareMaxSpeed)
             {
                 // reset to one and then multiply by maxSpeed so that it is exactly at the max speed

@@ -19,8 +19,6 @@ public class AvoidThreatBehaviour : FilteredFlockBehaviour
         List<Transform> filteredContext = (filter == null) ? context : filter.Filter(agent, context);
         if (filteredContext.Count == 0)
         {
-            // deaccelerate
-            agent.Deaccelerate();
             return agent.transform.up * flock.StaticMovementMultiplier;
         }
 
@@ -30,8 +28,6 @@ public class AvoidThreatBehaviour : FilteredFlockBehaviour
         // we only have one shepherd at a time
         if (filteredContext.Count > 0)
         {
-            // accelerate
-            agent.Accelerate();
             var threat = filteredContext[0];
             var movementIntensity = Mathf.Pow((float)(Vector2.Distance(agent.transform.position, threat.position) / SOFTNESS_FACTOR + SMALL_VALUE), -2);
             avoidanceMove = 10 * movementIntensity * (Vector2)(agent.transform.position - threat.position) / Vector2.Distance(agent.transform.position, threat.position);
