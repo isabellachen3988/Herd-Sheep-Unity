@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Threading;
 using Unity.VisualScripting;
 using UnityEngine;
+using static UnityEditor.Progress;
 
 [CreateAssetMenu(menuName = "Flock/Behaviour/Avoid Threat Behaviour")]
 public class AvoidThreatBehaviour : FilteredFlockBehaviour
@@ -26,13 +27,16 @@ public class AvoidThreatBehaviour : FilteredFlockBehaviour
         Vector2 avoidanceMove = Vector2.zero;
 
         // we only have one shepherd at a time
-        if (filteredContext.Count > 0)
+        if (filteredContext.Count > 0 && Vector2.SqrMagnitude(filteredContext[0].position - agent.transform.position) < flock.SquareNeighborRadius)
         {
             var threat = filteredContext[0];
             var movementIntensity = Mathf.Pow((float)(Vector2.Distance(agent.transform.position, threat.position) / SOFTNESS_FACTOR + SMALL_VALUE), -2);
             avoidanceMove = 10 * movementIntensity * (Vector2)(agent.transform.position - threat.position) / Vector2.Distance(agent.transform.position, threat.position);
+            agent.SetOutlinedSprite(true);
+        } else
+        {
+            agent.SetOutlinedSprite(false);
         }
-
 
         return avoidanceMove;
     }
