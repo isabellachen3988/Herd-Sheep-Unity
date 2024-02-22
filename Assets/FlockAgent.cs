@@ -13,25 +13,10 @@ public class FlockAgent : MonoBehaviour
 
     public Transform outlinedSprite;
 
-    //float acceleration = 0.01f;
-    //float speedMultiplier = 1.0f;
-    //public float SpeedMultiplier { get { return  speedMultiplier; } }
-
-    //public void Accelerate ()
-    //{
-    //    speedMultiplier += acceleration;
-    //}
-
-    //public void Deaccelerate()
-    //{
-    //    speedMultiplier = Mathf.Max(1f, speedMultiplier - acceleration);
-    //}
-
     // Start is called before the first frame update
     void Start()
     {
         agentCollider = GetComponent<Collider2D>(); // find whatever is attached and will cache for reference
-        //spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
     }
 
     public void SetOutlinedSprite(bool outlined)

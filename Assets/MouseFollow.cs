@@ -45,7 +45,7 @@ public class MouseFollow : MonoBehaviour
         rb.MovePosition(position);
     }
 
-    // fixed update for physics-based systems (why?)
+    // fixed update for physics-based systems -> used for the rigidbody system, which as the moveposition function
     private void FixedUpdate()
     {
         rb.MovePosition(position);

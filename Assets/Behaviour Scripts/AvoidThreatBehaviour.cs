@@ -15,7 +15,6 @@ public class AvoidThreatBehaviour : FilteredFlockBehaviour
         var SOFTNESS_FACTOR = 1;
         var SMALL_VALUE = 0.01;
         
-
         // if no neighbors, return no adjustment
         List<Transform> filteredContext = (filter == null) ? context : filter.Filter(agent, context);
         if (filteredContext.Count == 0)
