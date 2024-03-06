@@ -3,7 +3,9 @@ guid: 4dc7fdc1f5144024fa290f99ed7a4445
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - topRightLimitGameobject: {fileID: 6104591276971169300, guid: 14d0d42f7cb4de94481608236567b4ef, type: 3}
+  - bottomLeftLimitGameobject: {fileID: 393057452554479486, guid: 1b3e63193faa035469cc23c8ae9ff470, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

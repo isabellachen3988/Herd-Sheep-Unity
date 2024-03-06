@@ -638,7 +638,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   topRightLimitGameobject: {fileID: 6104591276971169300, guid: 14d0d42f7cb4de94481608236567b4ef, type: 3}
   bottomLeftLimitGameobject: {fileID: 393057452554479486, guid: 1b3e63193faa035469cc23c8ae9ff470, type: 3}
-  moveSpeed: 0.0275
+  moveSpeed: 0.1
 --- !u!50 &1422252059
 Rigidbody2D:
   serializedVersion: 4

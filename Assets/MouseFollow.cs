@@ -40,7 +40,12 @@ public class MouseFollow : MonoBehaviour
 
         borderDefinedMousePos.x = Mathf.Min(Mathf.Max(mousePosition.x, bottomLeftLimit.x), topRightLimit.x);
         borderDefinedMousePos.y = Mathf.Min(Mathf.Max(mousePosition.y, bottomLeftLimit.y), topRightLimit.y);
-        position = Vector2.Lerp(transform.position, borderDefinedMousePos, moveSpeed);
+
+        //var step = moveSpeed * Time.deltaTime;
+        position = Vector2.MoveTowards(transform.position, mousePosition, moveSpeed);
+        //position = Vector2.Lerp(transform.position, borderDefinedMousePos, moveSpeed);
+        //position = Vector2.Lerp(transform.position, mousePosition, moveSpeed);
+
 
         rb.MovePosition(position);
     }
