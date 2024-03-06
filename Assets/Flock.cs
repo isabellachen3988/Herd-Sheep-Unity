@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Runtime.CompilerServices;
+using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
 
 // both responsible for populating the flock with our prefabs
@@ -66,6 +68,7 @@ public class Flock : MonoBehaviour
     float squareNeighborRadius;
     float squareAvoidanceRadius;
     float squareCohesionAlignmentRadius;
+    List<Vector2> agentPositionVec;
 
     public float MSteepness { get { return mSteepness; } }
     public float AvoidEmotionWeight { get { return avoidEmotionWeight; } }
@@ -75,6 +78,7 @@ public class Flock : MonoBehaviour
     public float SquareAvoidanceRadius { get { return squareAvoidanceRadius; } }
     public float SquareCohesionAlignmentRadius { get { return squareCohesionAlignmentRadius; } }
     public float StaticMovementMultiplier { get { return staticMovementMultiplier; } }
+    public List<Vector2> AgentPositionVec { get { return agentPositionVec; } }
 
     public Vector2 BottomLeftBorder { 
         get
@@ -124,13 +128,16 @@ public class Flock : MonoBehaviour
 
             agents.Add(newAgent);
         }
+        agentPositionVec = new List<Vector2>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        agentPositionVec = new List<Vector2>();
         foreach(var agent  in agents)
         {
+            agentPositionVec.Add(agent.transform.position);
             List<Transform> context = GetNearbyObjects(agent);
 
             Vector2 velocity = behaviour.CalculateMove(agent, context, this);
