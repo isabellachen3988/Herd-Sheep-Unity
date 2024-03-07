@@ -51,13 +51,13 @@ public class Flock : MonoBehaviour
     [Range(10f, 25f)]
     public float borderTop = 15f;
 
-    [Range(1f, 3f)]
+    [Range(1f, 10f)]
     public float cohereEmotionWeight = 2f;
 
-    [Range(1f, 3f)]
+    [Range(1f, 10f)]
     public float alignEmotionWeight = 2f;
 
-    [Range(1f, 3f)]
+    [Range(1f, 10f)]
     public float avoidEmotionWeight = 3f;
 
     [Range(1f, 3f)]
