@@ -11,15 +11,21 @@ public class HerdSpeedMeasure : SpeedMeasure
     {
         if (flock.AgentPositionVec.Count == 0) return 0;
         float distanceVectorsTotal = 0;
+        var validMoveVec = 0;
         for (int i = 0; i < flock.AgentPositionVec.Count; i++)
         {
             var lastAgentPosition = Vector2.zero;
             if (lastPositions != null) lastAgentPosition = lastPositions[i];
-            distanceVectorsTotal += Vector2.Distance(flock.AgentPositionVec[i], lastAgentPosition);
+            var agentMovement = Vector2.Distance(flock.AgentPositionVec[i], lastAgentPosition);
+            if (agentMovement > 0)
+            {
+                distanceVectorsTotal += Vector2.Distance(flock.AgentPositionVec[i], lastAgentPosition);
+            }
+            validMoveVec++;
         }
 
         lastPositions = flock.AgentPositionVec;
-        return distanceVectorsTotal / (flock.AgentPositionVec.Count * Time.deltaTime);
+        return distanceVectorsTotal / (validMoveVec * Time.deltaTime);
     }
 
     // Start is called before the first frame update
